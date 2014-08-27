@@ -8,15 +8,19 @@ default['modules']['init'] = value_for_platform(
   'fedora' => {
     '20' => 'systemd'
   },
+  'debian' => {
+    '7.4' => 'sysvinit'
+  },
   'default' => 'upstart')
 default['modules']['packages'] = value_for_platform(
-  #'debian' => value_for_platform(
-  #  'ubuntu' => {
-  #    'default' => ['kmod'],
-  #    ['10.04', '12.04', '12.10'] => ['module-init-tools'],
-  #  },
-  #  'default' => ['kmod']
-  #),
+  'debian' => {
+    '7.4' => ['kmod']
+  },
+  'ubuntu' => {
+    'default' => ['kmod'],
+    ['10.04', '12.04', '12.10'] => ['module-init-tools'],
+  },
+
   'centos' => {
     '7.0' => ['module-init-tools'],
     '7.0.1406' => ['kmod']

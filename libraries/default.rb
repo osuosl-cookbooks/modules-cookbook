@@ -16,6 +16,8 @@ def supported?
     end
   when 'fedora'
     return true
+  when 'debian'
+    return true
   else
     Chef::Log.info("Your platform isn't manage to save module changes")
     return false
