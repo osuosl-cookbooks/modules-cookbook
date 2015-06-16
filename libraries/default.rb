@@ -6,7 +6,7 @@ def supported?
   when 'debian'
     # only work with systemd
     Chef::VersionConstraint::Platform.new('>= 8.0').include? node['platform_version']
-  when 'centos'
+  when 'centos', 'redhat'
     # only work with upstart
     Chef::VersionConstraint::Platform.new('>= 6.0').include? node['platform_version']
   when 'fedora'
