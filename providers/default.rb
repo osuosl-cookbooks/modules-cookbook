@@ -23,7 +23,6 @@ use_inline_resources
 include Chef::DSL::IncludeRecipe
 
 action :save do
-
   include_recipe 'modules::config'
 
   file path do

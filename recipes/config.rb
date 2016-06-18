@@ -38,4 +38,3 @@ end
 
 # include init job
 include_recipe "modules::_#{node['modules']['init']}"
-

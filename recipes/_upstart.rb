@@ -34,4 +34,3 @@ template '/etc/modules-load.d/chef-default.conf' do
   notifies :restart, 'service[modules-load]', :immediately
   only_if { node['modules']['default']['modules'] }
 end
-
