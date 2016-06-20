@@ -23,7 +23,6 @@ use_inline_resources
 include Chef::DSL::IncludeRecipe
 
 action :save do
-
   include_recipe 'modules::config'
 
   template path do
@@ -33,7 +32,7 @@ action :save do
     mode '0644'
     variables(
       :modules => new_resource.modules
-      )
+    )
     notifies :restart, 'service[modules-load]', :immediately
     only_if { supported? }
   end

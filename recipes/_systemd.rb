@@ -1,15 +1,14 @@
-%w[module-init-tools modules-load].each do |f|
-
+%w(module-init-tools modules-load).each do |f|
   cookbook_file "/usr/local/bin/#{f}.sh" do
     mode 0770
-    owner "root"
-    group "root"
+    owner 'root'
+    group 'root'
   end
 
   cookbook_file "/etc/systemd/system/#{f}.service" do
     mode 0644
-    owner "root"
-    group "root"
+    owner 'root'
+    group 'root'
     source "#{f}.systemd"
   end
 end
@@ -22,15 +21,15 @@ file '/etc/modules-load.d/modules.conf' do
   only_if { platform?('debian') }
 end
 
-service "module-init-tools" do
+service 'module-init-tools' do
   provider Chef::Provider::Service::Systemd
   action [:enable, :start]
 end
 
-service "modules-load" do
+service 'modules-load' do
   provider Chef::Provider::Service::Systemd
   action [:enable, :start]
-  notifies :restart, "service[module-init-tools]", :immediately
+  notifies :restart, 'service[module-init-tools]', :immediately
 end
 
 template '/etc/modules-load.d/chef-default.conf' do
